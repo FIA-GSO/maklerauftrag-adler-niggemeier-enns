@@ -7,6 +7,7 @@ def main():
     print("Willkommen zum Raumgrundflächenberechner!")
 
     gesamtflaeche = 0
+    raumdaten = []
 
     while True:
         try:
@@ -20,6 +21,8 @@ def main():
 
     for i in range(1, anzahl_raeume + 1):
         print(f"\nRaum {i}:")
+        raumname = input("Geben Sie einen Namen für den Raum ein: ")
+
         while True:
             try:
                 laenge = float(input("Länge des Raumes (in Metern): "))
@@ -33,11 +36,15 @@ def main():
 
         grundflaeche = berechne_grundflaeche(laenge, breite)
         gesamtflaeche += grundflaeche
-        print(f"Die Grundfläche des Raumes beträgt {grundflaeche} Quadratmeter.")
+        raumdaten.append((raumname, grundflaeche))
+        print(f"Die Grundfläche des Raumes {raumname} beträgt {grundflaeche} Quadratmeter.")
+
+    print("\nZusammenfassung:")
+    for raumname, raumflaeche in raumdaten:
+        print(f"{raumname}: {raumflaeche} Quadratmeter")
 
     print(f"\nDie Gesamtfläche aller Räume beträgt {gesamtflaeche} Quadratmeter.")
     print("\nVielen Dank für die Verwendung des Raumgrundflächenberechners!")
 
 if __name__ == "__main__":
     main()
-
